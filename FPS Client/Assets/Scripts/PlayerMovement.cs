@@ -61,7 +61,10 @@ public class PlayerMovement : MonoBehaviour
         switch (_movementType)
         {
             case MovementTypes.RigidbodyMovePosition:
-                _rigidbody.MovePosition(_rigidbody.position + _movementDirection * _moveSpeed);
+                // _rigidbody.MovePosition(_rigidbody.position + _movementDirection * _moveSpeed);
+                Vector3 velocity = (transform.forward * _playerInput.PrimaryMovementDirection.z + transform.right *
+                                   _playerInput.PrimaryMovementDirection.x).normalized * _moveSpeed;
+                _rigidbody.velocity = velocity;
                 break;
             case MovementTypes.CharacterControllerMove:
                 _characterController.Move(_movementDirection * _moveSpeed);
