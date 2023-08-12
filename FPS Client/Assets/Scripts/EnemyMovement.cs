@@ -35,6 +35,8 @@ public class EnemyMovement : MonoBehaviour
     private void Move()
     {
         transform.position = Vector3.Lerp(transform.position, _targetPosition, _speed * Time.deltaTime);
+        
+        // transform.position = _targetPosition;
     }
 
     public void SetTargetPosition(Vector3 position)

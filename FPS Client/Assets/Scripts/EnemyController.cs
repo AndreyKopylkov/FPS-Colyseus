@@ -26,6 +26,15 @@ public class EnemyController : MonoBehaviour
                     Debug.LogWarning($"{dataChange.Field} - не обрабатывается");
                     break;
             }
+
+            // if (dataChange.Field == "x")
+            // {
+            //     position.x = (float) dataChange.Value;
+            // }
+            // if (dataChange.Field == "y")
+            // {
+            //     position.z = (float) dataChange.Value;
+            // }
         }
 
         OnChangePosition?.Invoke(position);
