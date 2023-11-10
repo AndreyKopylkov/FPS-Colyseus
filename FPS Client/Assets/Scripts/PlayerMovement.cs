@@ -77,17 +77,22 @@ public class PlayerMovement : MonoBehaviour
         SendMove();
     }
 
-    public void GetMoveInfo(out Vector3 position)
+    public void GetMoveInfo(out Vector3 position, out Vector3 velocity)
     {
         position = transform.position;
+        velocity = _rigidbody.velocity;
     }
     
     private void SendMove()
     {
         Dictionary<string, object> data = new Dictionary<string, object>()
         {
-            {"x", transform.position.x},
-            {"y", transform.position.z}
+            {"pX", transform.position.x},
+            {"pY", transform.position.y},
+            {"pZ", transform.position.z},
+            {"vX", _rigidbody.velocity.x},
+            {"vY", _rigidbody.velocity.y},
+            {"vZ", _rigidbody.velocity.z}
         };
         MultiplayerManager.Instance.SendMessage("move", data);
     }
